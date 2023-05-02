@@ -9,6 +9,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -38,6 +39,14 @@ public class ControllerAdvice {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(BindException.class)
 	protected ApiResponse<Object> handleBadRequest(BindException exception) {
+		log.error(exception.getMessage(), exception);
+		return ApiResponse.error(VALIDATION_EXCEPTION,
+			Objects.requireNonNull(exception.getBindingResult().getFieldError()).getDefaultMessage());
+	}
+
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	protected ApiResponse<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
 		log.error(exception.getMessage(), exception);
 		return ApiResponse.error(VALIDATION_EXCEPTION,
 			Objects.requireNonNull(exception.getBindingResult().getFieldError()).getDefaultMessage());

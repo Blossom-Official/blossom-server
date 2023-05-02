@@ -27,4 +27,10 @@ public class User extends BaseEntity {
 
 	@Embedded
 	private SocialInfo socialInfo;
+
+	public static User newInstance(String socialId, UserSocialType socialType) {
+		return User.builder()
+			.socialInfo(SocialInfo.of(socialId, socialType))
+			.build();
+	}
 }
