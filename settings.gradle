@@ -1,0 +1,6 @@
+rootProject.name = 'blossom-server'
+include 'blossom-common'
+include 'blossom-domain'
+include 'blossom-external'
+include 'blossom-api'
+
