@@ -1,4 +1,5 @@
 dependencies {
+    implementation project(':blossom-common')
     implementation project(':blossom-domain')
     implementation project(':blossom-external')
 

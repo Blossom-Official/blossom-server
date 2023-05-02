@@ -20,13 +20,15 @@ public enum ErrorCode {
 	UNSUPPORTED_MEDIA_TYPE("C009", "허용하지 않는 미디어 타입입니다."),
 
 	// Validation Exception
-	VALIDATION_INVALID_TOKEN_EXCEPTION("V001", "잘못된 토큰입니다.");
+	VALIDATION_INVALID_TOKEN_EXCEPTION("V001", "잘못된 토큰입니다."),
 
 	// Forbidden Exception
 
 	// NotFound Exception
+	NOT_FOUND_USER_EXCEPTION("N001", "탈퇴했거나 존재하지 않는 유저입니다."),
 
 	// Conflict Exception
+	CONFLICT_USER_EXCEPTION("C001", "이미 해당 계정으로 회원가입하셨습니다.\n로그인 해주세요.");
 
 	private final String code;
 	private final String message;
