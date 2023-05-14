@@ -40,3 +40,8 @@ application.yml
 application-local.yml
 application-dev.yml
 application-prod.yml
+
+api-pr-check-dev.yml
+api-pr-check-prod.yml
+api-deploy-dev.yml
+api-deploy-prod.yml
