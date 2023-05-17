@@ -1,5 +1,6 @@
 package com.seoultech.blossom.api.service.auth.dto.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +15,10 @@ import lombok.ToString;
 @Builder(access = AccessLevel.PRIVATE)
 public class TokenResponse {
 
+	@Schema(description = "블라썸 서버 jwt access token")
 	private String accessToken;
+
+	@Schema(description = "블라썸 서버 jwt refresh token")
 	private String refreshToken;
 
 	public static TokenResponse of(String accessToken, String refreshToken) {
