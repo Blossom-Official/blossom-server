@@ -26,6 +26,7 @@ public enum ErrorCode {
 
 	// NotFound Exception
 	NOT_FOUND_USER_EXCEPTION("N001", "탈퇴했거나 존재하지 않는 유저입니다."),
+	NOT_FOUND_FLOWER_EXCEPTION("N002", "존재하지 않는 꽃입니다."),
 
 	// Conflict Exception
 	CONFLICT_USER_EXCEPTION("C001", "이미 해당 계정으로 회원가입하셨습니다.\n로그인 해주세요.");
