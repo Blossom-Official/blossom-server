@@ -21,12 +21,12 @@ public class BaseEntity {
 
 	@CreatedDate
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	@Column
+	@Column(name = "CREATED_AT", nullable = false)
 	private LocalDateTime createdAt;
 
 	@LastModifiedDate
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	@Column
+	@Column(name = "MODIFIED_AT", nullable = false)
 	private LocalDateTime modifiedAt;
 
 }

@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS `FLOWER_LANGUAGE`;
 DROP TABLE IF EXISTS `FLOWER_TIME`;
 DROP TABLE IF EXISTS `FLOWER_CARE`;
 DROP TABLE IF EXISTS `BETTER_TOGETHER`;
-DROP TABLE IF EXISTS `FLOWER_CONTENTS`;
-DROP TABLE IF EXISTS `FLOWER_LIKES`;
+DROP TABLE IF EXISTS `FLOWER_CONTENT`;
+DROP TABLE IF EXISTS `FLOWER_LIKE`;
 
 CREATE TABLE `USER`
 (
@@ -90,16 +90,16 @@ CREATE TABLE `BETTER_TOGETHER`
     `MODIFIED_AT`               datetime NOT NULL
 );
 
-CREATE TABLE `FLOWER_CONTENTS`
+CREATE TABLE `FLOWER_CONTENT`
 (
-    `FLOWER_CONTENTS_ID` bigint auto_increment primary key,
-    `FLOWER_ID`          bigint   NOT NULL,
-    `CONTENTS_ID`        bigint   NOT NULL,
-    `CREATED_AT`         datetime NOT NULL,
-    `MODIFIED_AT`        datetime NOT NULL
+    `FLOWER_CONTENT_ID` bigint auto_increment primary key,
+    `FLOWER_ID`         bigint   NOT NULL,
+    `CONTENT_ID`        bigint   NOT NULL,
+    `CREATED_AT`        datetime NOT NULL,
+    `MODIFIED_AT`       datetime NOT NULL
 );
 
-CREATE TABLE `FLOWER_LIKES`
+CREATE TABLE `FLOWER_LIKE`
 (
     `FLOWER_LIKES_ID` bigint auto_increment primary key,
     `USER_ID`         bigint   NOT NULL,
