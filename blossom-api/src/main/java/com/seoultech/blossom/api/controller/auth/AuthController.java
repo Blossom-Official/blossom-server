@@ -51,7 +51,7 @@ public class AuthController {
 		return ApiResponse.success(tokenInfo);
 	}
 
-	@Operation(summary = "로그아웃")
+	@Operation(summary = "[인증] 로그아웃")
 	@Auth
 	@PostMapping("/auth/logout")
 	public ApiResponse<String> logout(@UserId Long userId) {
