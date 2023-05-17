@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class SocialInfo {
 
-	@Column(nullable = false, length = 300)
+	@Column(name = "SOCIAL_ID", nullable = false, length = 300)
 	private String socialId;
 
-	@Column(nullable = false, length = 30)
+	@Column(name = "SOCIAL_TYPE", nullable = false, length = 30)
 	@Enumerated(EnumType.STRING)
 	private UserSocialType socialType;
 
