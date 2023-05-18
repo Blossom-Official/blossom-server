@@ -1,4 +1,4 @@
-package com.seoultech.blossom.domain.domain.flower;
+package com.seoultech.blossom.domain.domain.flowerlike;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.user.User;
 
 import lombok.AccessLevel;

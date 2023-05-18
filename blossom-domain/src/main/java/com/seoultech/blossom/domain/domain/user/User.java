@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.seoultech.blossom.domain.domain.common.BaseEntity;
-import com.seoultech.blossom.domain.domain.flower.FlowerLike;
+import com.seoultech.blossom.domain.domain.flowerlike.FlowerLike;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
