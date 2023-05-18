@@ -7,7 +7,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.seoultech.blossom.api.service.auth.dto.request.TokenRequestDto;
+import com.seoultech.blossom.api.service.auth.dto.request.TokenRequest;
 import com.seoultech.blossom.api.service.auth.dto.response.TokenResponse;
 import com.seoultech.blossom.api.service.user.UserServiceUtils;
 import com.seoultech.blossom.common.constant.RedisKey;
@@ -34,7 +34,7 @@ public class CreateTokenService {
 		return TokenResponse.of(tokens.get(0), tokens.get(1));
 	}
 
-	public TokenResponse reissueToken(TokenRequestDto request) {
+	public TokenResponse reissueToken(TokenRequest request) {
 		Long userId = jwtUtils.getUserIdFromJwt(request.getAccessToken());
 		User user = UserServiceUtils.findUserById(userRepository, userId);
 		if (!jwtUtils.validateToken(request.getRefreshToken())) {

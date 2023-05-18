@@ -5,8 +5,8 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.seoultech.blossom.api.service.auth.AuthService;
-import com.seoultech.blossom.api.service.auth.dto.request.LoginRequestDto;
-import com.seoultech.blossom.api.service.auth.dto.request.SignUpRequestDto;
+import com.seoultech.blossom.api.service.auth.dto.request.LoginRequest;
+import com.seoultech.blossom.api.service.auth.dto.request.SignUpRequest;
 import com.seoultech.blossom.api.service.user.UserService;
 import com.seoultech.blossom.api.service.user.UserServiceUtils;
 import com.seoultech.blossom.domain.domain.user.User;
@@ -31,13 +31,13 @@ public class KakaoAuthService implements AuthService {
 	private final UserService userService;
 
 	@Override
-	public Long signUp(SignUpRequestDto request) {
+	public Long signUp(SignUpRequest request) {
 		KakaoProfileResponse response = kakaoApiCaller.getProfileInfo(request.getToken());
 		return userService.registerUser(request.toCreateUserDto(response.getId()));
 	}
 
 	@Override
-	public Long login(LoginRequestDto request) {
+	public Long login(LoginRequest request) {
 		KakaoProfileResponse response = kakaoApiCaller.getProfileInfo(request.getToken());
 		User user = UserServiceUtils.findUserBySocialIdAndSocialType(userRepository, response.getId(), socialType);
 		return user.getId();
