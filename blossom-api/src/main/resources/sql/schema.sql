@@ -101,10 +101,10 @@ CREATE TABLE `FLOWER_CONTENT`
 
 CREATE TABLE `FLOWER_LIKE`
 (
-    `FLOWER_LIKES_ID` bigint auto_increment primary key,
-    `USER_ID`         bigint   NOT NULL,
-    `FLOWER_ID`       bigint   NOT NULL,
-    `CREATED_AT`      datetime NOT NULL,
-    `MODIFIED_AT`     datetime NOT NULL
+    `FLOWER_LIKE_ID` bigint auto_increment primary key,
+    `USER_ID`        bigint   NOT NULL,
+    `FLOWER_ID`      bigint   NOT NULL,
+    `CREATED_AT`     datetime NOT NULL,
+    `MODIFIED_AT`    datetime NOT NULL
 );
 
