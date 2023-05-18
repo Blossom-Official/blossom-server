@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class TokenRequestDto {
+public class TokenRequest {
 
 	@Schema(description = "토큰 - accessToken", example = "eyJhbGciOiJIUzUxMiJ9.udnKnDSK08EuX56E5k-")
 	@NotBlank(message = "{auth.accessToken.notBlank}")

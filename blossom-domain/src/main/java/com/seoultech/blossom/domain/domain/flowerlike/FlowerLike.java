@@ -1,4 +1,4 @@
-package com.seoultech.blossom.domain.domain.flower;
+package com.seoultech.blossom.domain.domain.flowerlike;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.seoultech.blossom.domain.domain.common.BaseEntity;
+import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.user.User;
 
 import lombok.AccessLevel;
@@ -24,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(access = AccessLevel.PRIVATE)
-public class FlowerLike {
+public class FlowerLike extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,4 +40,11 @@ public class FlowerLike {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "FLOWER_ID", nullable = false)
 	private Flower flower;
+
+	public static FlowerLike newInstance(User user, Flower flower) {
+		return FlowerLike.builder()
+			.user(user)
+			.flower(flower)
+			.build();
+	}
 }

@@ -17,7 +17,7 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class SignUpRequestDto {
+public class SignUpRequest {
 
 	@Schema(description = "소셜 로그인 타입", example = "KAKAO")
 	@NotNull(message = "{auth.socialType.notNull}")

@@ -28,6 +28,7 @@ public enum ErrorCode {
 	// Conflict Exception
 	CONFLICT_EXCEPTION("C001", "이미 존재합니다."),
 	CONFLICT_USER_EXCEPTION("C002", "이미 해당 계정으로 회원가입하셨습니다.\n로그인 해주세요."),
+	CONFLICT_FLOWER_LIKE_EXCEPTION("C003", "꽃 좋아요 상태가 요청하신 상태와 충돌합니다."),
 
 	// Unsupported Media Type Exception
 

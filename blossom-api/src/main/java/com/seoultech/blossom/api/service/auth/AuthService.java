@@ -1,11 +1,11 @@
 package com.seoultech.blossom.api.service.auth;
 
-import com.seoultech.blossom.api.service.auth.dto.request.LoginRequestDto;
-import com.seoultech.blossom.api.service.auth.dto.request.SignUpRequestDto;
+import com.seoultech.blossom.api.service.auth.dto.request.LoginRequest;
+import com.seoultech.blossom.api.service.auth.dto.request.SignUpRequest;
 
 public interface AuthService {
 
-	Long signUp(SignUpRequestDto request);
+	Long signUp(SignUpRequest request);
 
-	Long login(LoginRequestDto request);
+	Long login(LoginRequest request);
 }
