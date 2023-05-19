@@ -2,6 +2,8 @@ package com.seoultech.blossom.domain.domain.flowerlike.repository;
 
 import static com.seoultech.blossom.domain.domain.flowerlike.QFlowerLike.*;
 
+import java.util.List;
+
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.flowerlike.FlowerLike;
@@ -22,5 +24,13 @@ public class FlowerLikeRepositoryImpl implements FlowerLikeRepositoryCustom {
 				flowerLike.user.eq(user),
 				flowerLike.flower.eq(flower))
 			.fetchOne();
+	}
+
+	@Override
+	public List<FlowerLike> findFlowerLikesByUser(User user) {
+		return queryFactory
+			.selectFrom(flowerLike)
+			.where(flowerLike.user.eq(user))
+			.fetch();
 	}
 }
