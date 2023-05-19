@@ -1,10 +1,14 @@
 package com.seoultech.blossom.api.service.flowerlike;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seoultech.blossom.api.service.flower.FlowerServiceUtils;
 import com.seoultech.blossom.api.service.flowerlike.dto.request.CheckFlowerLikeRequest;
+import com.seoultech.blossom.api.service.flowerlike.dto.request.DeleteFlowerLikeRequest;
 import com.seoultech.blossom.api.service.user.UserServiceUtils;
 import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.flower.repository.FlowerRepository;
@@ -28,7 +32,7 @@ public class FlowerLikeService {
 		User user = UserServiceUtils.findUserById(userRepository, userId);
 		Flower flower = FlowerServiceUtils.findFlowerById(flowerRepository, flowerId);
 		FlowerLike flowerLike = flowerLikeRepository.findFlowerLikeByUserAndFlower(user, flower);
-		FlowerLikeServiceUtils.validateFlowerLikeRequest(flowerLike, request.getIsCheck());
+		FlowerLikeServiceUtils.validateCheckFlowerLikeRequest(flowerLike, request.getIsCheck());
 
 		if (request.getIsCheck()) { // 좋아요 생성
 			flowerLikeRepository.save(FlowerLike.newInstance(user, flower));
@@ -37,5 +41,16 @@ public class FlowerLikeService {
 		if (!request.getIsCheck()) { // 좋아요 해제
 			flowerLikeRepository.delete(flowerLike);
 		}
+	}
+
+	public void deleteFlowerLike(DeleteFlowerLikeRequest request, Long userId) {
+		User user = UserServiceUtils.findUserById(userRepository, userId);
+		List<FlowerLike> flowerLikes = flowerLikeRepository.findFlowerLikesByUser(user);
+		FlowerLikeServiceUtils.validateDeleteFlowerLikeRequest(flowerLikes, request.getFlowerIds());
+		List<FlowerLike> deleteFlowerLikes = flowerLikes
+			.stream()
+			.filter(flowerLike -> request.getFlowerIds().contains(flowerLike.getFlower().getId()))
+			.collect(Collectors.toList());
+		flowerLikeRepository.deleteAll(deleteFlowerLikes);
 	}
 }

@@ -20,6 +20,9 @@ import lombok.ToString;
 @Builder(access = AccessLevel.PRIVATE)
 public class FlowerInfo {
 
+	@Schema(description = "꽃 id")
+	private Long flowerId;
+
 	@Schema(description = "한글 이름")
 	private String koreanName;
 
@@ -31,6 +34,7 @@ public class FlowerInfo {
 
 	public static FlowerInfo of(Flower flower) {
 		return FlowerInfo.builder()
+			.flowerId(flower.getId())
 			.koreanName(flower.getKoreanName())
 			.englishName(flower.getEnglishName())
 			.imageUrl(flower.getFlowerImages()
