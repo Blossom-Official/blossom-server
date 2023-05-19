@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seoultech.blossom.api.service.flower.FlowerServiceUtils;
-import com.seoultech.blossom.api.service.flowerlike.dto.CheckFlowerLikeRequest;
+import com.seoultech.blossom.api.service.flowerlike.dto.request.CheckFlowerLikeRequest;
 import com.seoultech.blossom.api.service.user.UserServiceUtils;
 import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.flower.repository.FlowerRepository;

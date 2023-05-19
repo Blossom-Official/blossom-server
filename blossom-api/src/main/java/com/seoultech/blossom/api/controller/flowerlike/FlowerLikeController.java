@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seoultech.blossom.api.config.interceptor.auth.Auth;
 import com.seoultech.blossom.api.config.resolver.UserId;
 import com.seoultech.blossom.api.service.flowerlike.FlowerLikeService;
-import com.seoultech.blossom.api.service.flowerlike.dto.CheckFlowerLikeRequest;
+import com.seoultech.blossom.api.service.flowerlike.dto.request.CheckFlowerLikeRequest;
 import com.seoultech.blossom.common.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;

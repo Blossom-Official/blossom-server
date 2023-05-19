@@ -1,4 +1,4 @@
-package com.seoultech.blossom.api.service.flowerlike.dto;
+package com.seoultech.blossom.api.service.flowerlike.dto.request;
 
 import javax.validation.constraints.NotNull;
 
