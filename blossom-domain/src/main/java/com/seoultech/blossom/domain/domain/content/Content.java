@@ -1,18 +1,19 @@
-package com.seoultech.blossom.domain.domain.flower;
+package com.seoultech.blossom.domain.domain.content;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.seoultech.blossom.domain.domain.common.BaseEntity;
-import com.seoultech.blossom.domain.domain.content.Content;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -20,24 +21,19 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "FLOWER_CONTENT")
+@Table(name = "CONTENT")
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(access = AccessLevel.PRIVATE)
-public class FlowerContent extends BaseEntity {
+public class Content extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "FLOWER_CONTENT_ID")
+	@Column(name = "CONTENT_ID")
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "FLOWER_ID", nullable = false)
-	private Flower flower;
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CONTENT_ID", nullable = false)
-	private Content content;
+	@OneToMany(mappedBy = "content", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private final List<ContentInfo> contentInfos = new ArrayList<>();
 }
