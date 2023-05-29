@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS `FLOWER_CONTENT`;
 DROP TABLE IF EXISTS `FLOWER_LIKE`;
 DROP TABLE IF EXISTS `CONTENT`;
 DROP TABLE IF EXISTS `CONTENT_INFO`;
+DROP TABLE IF EXISTS `CONTENT_LIKE`;
 
 CREATE TABLE `USER`
 (
@@ -127,4 +128,13 @@ CREATE TABLE `CONTENT_INFO`
     `LINK_URL`          varchar(300) NULL,
     `CREATED_AT`        datetime     NOT NULL,
     `MODIFIED_AT`       datetime     NOT NULL
+);
+
+CREATE TABLE `CONTENT_LIKE`
+(
+    `CONTENT_LIKE_ID` bigint auto_increment primary key,
+    `USER_ID`         bigint   NOT NULL,
+    `CONTENT_ID`      bigint   NOT NULL,
+    `CREATED_AT`      datetime NOT NULL,
+    `MODIFIED_AT`     datetime NOT NULL
 );
