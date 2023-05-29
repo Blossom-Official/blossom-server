@@ -8,6 +8,8 @@ DROP TABLE IF EXISTS `FLOWER_CARE`;
 DROP TABLE IF EXISTS `BETTER_TOGETHER`;
 DROP TABLE IF EXISTS `FLOWER_CONTENT`;
 DROP TABLE IF EXISTS `FLOWER_LIKE`;
+DROP TABLE IF EXISTS `CONTENT`;
+DROP TABLE IF EXISTS `CONTENT_INFO`;
 
 CREATE TABLE `USER`
 (
@@ -108,3 +110,21 @@ CREATE TABLE `FLOWER_LIKE`
     `MODIFIED_AT`    datetime NOT NULL
 );
 
+CREATE TABLE `CONTENT`
+(
+    `CONTENT_ID`  bigint auto_increment primary key,
+    `CREATED_AT`  datetime NOT NULL,
+    `MODIFIED_AT` datetime NOT NULL
+);
+
+CREATE TABLE `CONTENT_INFO`
+(
+    `CONTENT_INFO_ID`   bigint auto_increment primary key,
+    `CONTENT_ID`        bigint       NOT NULL,
+    `CONTENT_IMAGE_URL` varchar(300) NOT NULL,
+    `ORDER`             int          NOT NULL,
+    `LINK_YN`           boolean      NOT NULL,
+    `LINK_URL`          varchar(300) NULL,
+    `CREATED_AT`        datetime     NOT NULL,
+    `MODIFIED_AT`       datetime     NOT NULL
+);

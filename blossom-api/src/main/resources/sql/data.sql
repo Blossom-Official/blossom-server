@@ -51,3 +51,21 @@ INSERT INTO BETTER_TOGETHER
 (BETTER_TOGETHER_ID, FLOWER_ID, BETTER_TOGETHER_FLOWER_ID, CREATED_AT, MODIFIED_AT)
 VALUES (1, 1, 2, "2023-01-01", "2023-01-01"),
        (2, 2, 1, "2023-01-01", "2023-01-01");
+
+INSERT INTO CONTENT
+    (CONTENT_ID, CREATED_AT, MODIFIED_AT)
+VALUES (1, "2023-01-01", "2023-01-01"),
+       (2, "2023-01-01", "2023-01-01");
+
+INSERT INTO CONTENT_INFO
+(CONTENT_INFO_ID, CONTENT_ID, CONTENT_IMAGE_URL, `ORDER`, LINK_YN, LINK_URL, CREATED_AT, MODIFIED_AT)
+VALUES (1, 1, "content 1 image url 1", 1, true, "content 1 link url 1", "2023-01-01", "2023-01-01"),
+       (2, 1, "content 1 image url 2", 2, false, NULL, "2023-01-01", "2023-01-01"),
+       (3, 1, "content 1 image url 3", 3, false, NULL, "2023-01-01", "2023-01-01"),
+       (4, 1, "content 1 image url 4", 4, true, "content 1 link url 4", "2023-01-01", "2023-01-01"),
+       (5, 1, "content 1 image url 5", 5, true, "content 1 link url 5", "2023-01-01", "2023-01-01"),
+       (6, 2, "content 2 image url 1", 1, true, "content 2 link url 1", "2023-01-01", "2023-01-01"),
+       (7, 2, "content 2 image url 2", 2, false, NULL, "2023-01-01", "2023-01-01"),
+       (8, 2, "content 2 image url 3", 3, false, NULL, "2023-01-01", "2023-01-01"),
+       (9, 2, "content 2 image url 4", 4, true, "content 2 link url 4", "2023-01-01", "2023-01-01"),
+       (10, 2, "content 2 image url 5", 5, true, "content 2 link url 5", "2023-01-01", "2023-01-01");
