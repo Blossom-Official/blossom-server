@@ -55,4 +55,8 @@ public class User extends BaseEntity {
 			.profileImageUrl(null)
 			.build();
 	}
+
+	public void updateProfileImageUrl(String profileImageUrl) {
+		this.profileImageUrl = profileImageUrl;
+	}
 }
