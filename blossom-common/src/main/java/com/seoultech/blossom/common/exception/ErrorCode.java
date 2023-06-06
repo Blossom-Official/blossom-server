@@ -15,7 +15,7 @@ public enum ErrorCode {
 	VALIDATION_INVALID_TOKEN_EXCEPTION("V004", "잘못된 토큰입니다."),
 	VALIDATION_DELETE_FLOWER_LIKE_EXCEPTION("V005", "잘못된 꽃 좋아요 삭제 요청입니다."),
 	VALIDATION_FILE_NAME_EXCEPTION("V006", "잘못된 파일의 originalFilename 입니다."),
-	VALIDATION_FILE_TYPE_EXCEPTION("V007", "잘못된 확장자 형식의 파일입니다"),
+	VALIDATION_FILE_TYPE_EXCEPTION("V007", "잘못된 확장자 형식의 파일입니다."),
 
 	// Unauthorized Exception
 	UNAUTHORIZED_EXCEPTION("U001", "토큰이 만료되었습니다. 다시 로그인 해주세요."),
