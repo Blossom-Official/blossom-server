@@ -25,6 +25,7 @@ public enum ErrorCode {
 	NOT_FOUND_EXCEPTION("N001", "존재하지 않습니다."),
 	NOT_FOUND_USER_EXCEPTION("N002", "탈퇴했거나 존재하지 않는 유저입니다."),
 	NOT_FOUND_FLOWER_EXCEPTION("N003", "존재하지 않는 꽃입니다."),
+	NOT_FOUND_CONTENT_EXCEPTION("N004", "존재하지 않는 컨텐츠입니다."),
 
 	// Conflict Exception
 	CONFLICT_EXCEPTION("C001", "이미 존재합니다."),
