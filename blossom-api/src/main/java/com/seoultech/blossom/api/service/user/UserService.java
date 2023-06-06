@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.seoultech.blossom.api.service.image.provider.S3Provider;
 import com.seoultech.blossom.api.service.image.provider.dto.request.ImageUploadFileRequest;
 import com.seoultech.blossom.api.service.user.dto.request.CreateUserRequestDto;
+import com.seoultech.blossom.api.service.user.dto.request.UpdateNicknameRequest;
 import com.seoultech.blossom.common.type.FileType;
 import com.seoultech.blossom.domain.domain.user.User;
 import com.seoultech.blossom.domain.domain.user.repository.UserRepository;
@@ -34,5 +35,10 @@ public class UserService {
 			String uploadImageUrl = s3Provider.uploadFile(ImageUploadFileRequest.of(FileType.PROFILE_IMAGE), image);
 			user.updateProfileImageUrl(uploadImageUrl);
 		}
+	}
+
+	public void updateNickname(UpdateNicknameRequest request, Long userId) {
+		User user = UserServiceUtils.findUserById(userRepository, userId);
+		user.updateNickname(request.getNickname());
 	}
 }
