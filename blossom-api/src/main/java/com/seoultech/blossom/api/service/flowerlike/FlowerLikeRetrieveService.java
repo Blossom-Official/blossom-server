@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class FlowerLikeRetrieveService {
 
 	private final UserRepository userRepository;
