@@ -75,4 +75,7 @@ public class Flower extends BaseEntity {
 
 	@OneToMany(mappedBy = "flower", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private final List<BetterTogether> betterTogethers = new ArrayList<>();
+
+	@OneToMany(mappedBy = "flower", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private final List<FlowerContent> flowerContents = new ArrayList<>();
 }

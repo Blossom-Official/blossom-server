@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.seoultech.blossom.api.service.flower.dto.ContentSummaryInfo;
 import com.seoultech.blossom.api.service.flower.dto.FlowerInfo;
 import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.flower.FlowerCare;
@@ -63,9 +64,8 @@ public class FlowerResponse {
 	@Schema(description = "함께 어울리는 꽃")
 	private List<FlowerInfo> betterTogethers;
 
-	// TODO: 2023/05/17 컨텐츠 추가한 후 수정
-	@Schema(description = "컨텐츠 내용 추가 예정")
-	private List<String> contents;
+	@Schema(description = "컨텐츠")
+	private List<ContentSummaryInfo> contents;
 
 	public static FlowerResponse of(Flower flower) {
 		return FlowerResponse.builder()
@@ -102,7 +102,10 @@ public class FlowerResponse {
 				.stream()
 				.map(betterTogether -> FlowerInfo.of(betterTogether.getBetterTogetherFlower()))
 				.collect(Collectors.toList()))
-			.contents(null)
+			.contents(flower.getFlowerContents()
+				.stream()
+				.map(flowerContent -> ContentSummaryInfo.of(flowerContent.getContent()))
+				.collect(Collectors.toList()))
 			.build();
 	}
 }
