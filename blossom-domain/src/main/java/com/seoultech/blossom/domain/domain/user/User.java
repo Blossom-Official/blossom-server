@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.seoultech.blossom.domain.domain.common.BaseEntity;
-import com.seoultech.blossom.domain.domain.contentlike.ContentLike;
 import com.seoultech.blossom.domain.domain.flowerlike.FlowerLike;
 
 import lombok.AccessLevel;
@@ -48,9 +47,6 @@ public class User extends BaseEntity {
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private final List<FlowerLike> flowerLikes = new ArrayList<>();
-
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private final List<ContentLike> contentLikes = new ArrayList<>();
 
 	public static User newInstance(String socialId, UserSocialType socialType) {
 		return User.builder()
