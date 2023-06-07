@@ -14,6 +14,8 @@ public enum ErrorCode {
 	UNSUPPORTED_MEDIA_TYPE("V003", "허용하지 않는 미디어 타입입니다."),
 	VALIDATION_INVALID_TOKEN_EXCEPTION("V004", "잘못된 토큰입니다."),
 	VALIDATION_DELETE_FLOWER_LIKE_EXCEPTION("V005", "잘못된 꽃 좋아요 삭제 요청입니다."),
+	VALIDATION_FILE_NAME_EXCEPTION("V006", "잘못된 파일의 originalFilename 입니다."),
+	VALIDATION_FILE_TYPE_EXCEPTION("V007", "잘못된 확장자 형식의 파일입니다."),
 
 	// Unauthorized Exception
 	UNAUTHORIZED_EXCEPTION("U001", "토큰이 만료되었습니다. 다시 로그인 해주세요."),
@@ -31,6 +33,7 @@ public enum ErrorCode {
 	CONFLICT_EXCEPTION("C001", "이미 존재합니다."),
 	CONFLICT_USER_EXCEPTION("C002", "이미 해당 계정으로 회원가입하셨습니다.\n로그인 해주세요."),
 	CONFLICT_FLOWER_LIKE_EXCEPTION("C003", "꽃 좋아요 상태가 요청하신 상태와 충돌합니다."),
+	CONFLICT_DELETE_PROFILE_IMAGE_EXCEPTION("C004", "이미 기본이미지로 설정되어있습니다."),
 
 	// Unsupported Media Type Exception
 

@@ -42,17 +42,25 @@ public class User extends BaseEntity {
 	@Column(name = "NICKNAME", nullable = false, length = 30)
 	private String nickname;
 
-	@Column(name = "PROFILE_IMAGE_URL", nullable = true, length = 300)
+	@Column(name = "PROFILE_IMAGE_URL", nullable = false, length = 300)
 	private String profileImageUrl;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private final List<FlowerLike> flowerLikes = new ArrayList<>();
 
-	public static User newInstance(String socialId, UserSocialType socialType) {
+	public static User newInstance(String socialId, UserSocialType socialType, String profileImageUrl) {
 		return User.builder()
 			.socialInfo(SocialInfo.of(socialId, socialType))
-			.nickname("")
-			.profileImageUrl(null)
+			.nickname("블라썸")
+			.profileImageUrl(profileImageUrl)
 			.build();
+	}
+
+	public void updateNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public void updateProfileImageUrl(String profileImageUrl) {
+		this.profileImageUrl = profileImageUrl;
 	}
 }
