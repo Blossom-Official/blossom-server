@@ -3,6 +3,7 @@ package com.seoultech.blossom.api.controller.user;
 import javax.validation.Valid;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,14 @@ public class UserController {
 		@RequestPart(name = "image") MultipartFile image,
 		@UserId Long userId) {
 		userService.updateProfileImage(image, userId);
+		return ApiResponse.SUCCESS;
+	}
+
+	@Operation(summary = "[인증] 프로필 사진 기본이미지로 변경")
+	@Auth
+	@DeleteMapping("/user/profile/image")
+	public ApiResponse<String> deleteProfileImage(@UserId Long userId) {
+		userService.deleteProfileImage(userId);
 		return ApiResponse.SUCCESS;
 	}
 

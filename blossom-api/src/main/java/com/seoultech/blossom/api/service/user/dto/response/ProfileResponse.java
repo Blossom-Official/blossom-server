@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.seoultech.blossom.api.service.flower.dto.FlowerInfo;
+import com.seoultech.blossom.api.service.user.UserServiceUtils;
 import com.seoultech.blossom.domain.domain.user.User;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,6 +25,9 @@ public class ProfileResponse {
 	@Schema(description = "닉네임")
 	private String nickname;
 
+	@Schema(description = "기본 이미지 여부")
+	private Boolean isDefaultProfileImage;
+
 	@Schema(description = "프로필 이미지")
 	private String profileImageUrl;
 
@@ -33,6 +37,7 @@ public class ProfileResponse {
 	public static ProfileResponse of(User user) {
 		return ProfileResponse.builder()
 			.nickname(user.getNickname())
+			.isDefaultProfileImage(UserServiceUtils.isDefaultProfileImage(user.getProfileImageUrl()))
 			.profileImageUrl(user.getProfileImageUrl())
 			.flowers(user.getFlowerLikes()
 				.stream()
