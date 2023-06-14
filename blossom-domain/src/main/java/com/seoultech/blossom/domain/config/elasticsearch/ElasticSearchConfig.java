@@ -6,8 +6,10 @@ import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
+import com.seoultech.blossom.domain.domain.flower.repository.FlowerSearchRepository;
+
 @Configuration
-@EnableElasticsearchRepositories
+@EnableElasticsearchRepositories(basePackageClasses = FlowerSearchRepository.class)
 public class ElasticSearchConfig extends AbstractElasticsearchConfig {
 
 	@Override
