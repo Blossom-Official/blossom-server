@@ -1,8 +1,7 @@
 package com.seoultech.blossom.api.service.auth.impl;
 
-import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.seoultech.blossom.api.service.auth.AuthService;
 import com.seoultech.blossom.api.service.auth.dto.request.LoginRequest;
