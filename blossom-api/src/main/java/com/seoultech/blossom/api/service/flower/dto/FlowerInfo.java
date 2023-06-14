@@ -3,6 +3,7 @@ package com.seoultech.blossom.api.service.flower.dto;
 import java.util.Comparator;
 
 import com.seoultech.blossom.domain.domain.flower.Flower;
+import com.seoultech.blossom.domain.domain.flower.FlowerDocument;
 import com.seoultech.blossom.domain.domain.flower.FlowerImage;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -42,6 +43,15 @@ public class FlowerInfo {
 				.min(Comparator.comparing(FlowerImage::getOrder))
 				.get()
 				.getFlowerImageUrl())
+			.build();
+	}
+
+	public static FlowerInfo of(FlowerDocument flowerDocument) {
+		return FlowerInfo.builder()
+			.flowerId(flowerDocument.getId())
+			.koreanName(flowerDocument.getKoreanName())
+			.englishName(flowerDocument.getEnglishName())
+			.imageUrl(flowerDocument.getFlowerImageUrl())
 			.build();
 	}
 }
