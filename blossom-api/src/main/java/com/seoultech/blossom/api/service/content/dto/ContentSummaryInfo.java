@@ -1,4 +1,4 @@
-package com.seoultech.blossom.api.service.flower.dto;
+package com.seoultech.blossom.api.service.content.dto;
 
 import java.util.Comparator;
 

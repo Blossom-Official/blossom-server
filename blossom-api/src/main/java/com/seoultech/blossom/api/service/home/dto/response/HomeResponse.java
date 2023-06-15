@@ -3,7 +3,7 @@ package com.seoultech.blossom.api.service.home.dto.response;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.seoultech.blossom.api.service.flower.dto.ContentSummaryInfo;
+import com.seoultech.blossom.api.service.content.dto.ContentSummaryInfo;
 import com.seoultech.blossom.api.service.flower.dto.FlowerInfo;
 import com.seoultech.blossom.domain.domain.content.Content;
 import com.seoultech.blossom.domain.domain.flower.Flower;

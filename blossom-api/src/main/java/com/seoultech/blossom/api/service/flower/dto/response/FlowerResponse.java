@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.seoultech.blossom.api.service.flower.dto.ContentSummaryInfo;
+import com.seoultech.blossom.api.service.content.dto.ContentSummaryInfo;
 import com.seoultech.blossom.api.service.flower.dto.FlowerInfo;
 import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.flower.FlowerCare;
