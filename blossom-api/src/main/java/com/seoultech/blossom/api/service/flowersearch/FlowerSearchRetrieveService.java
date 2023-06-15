@@ -36,7 +36,7 @@ public class FlowerSearchRetrieveService {
 			.collect(Collectors.toList());
 		flowers.forEach(flower -> {
 			if (flower != null) {
-				FlowerHit flowerHit = flowerHitRepository.findFlowerHitByFlower(flower);
+				FlowerHit flowerHit = flowerHitRepository.findFlowerHitByFlowerForUpdate(flower);
 				if (flowerHit == null) {
 					flowerHitRepository.save(FlowerHit.newInstance(flower));
 				} else {

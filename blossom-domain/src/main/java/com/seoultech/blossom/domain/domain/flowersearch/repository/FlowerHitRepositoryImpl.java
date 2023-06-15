@@ -18,7 +18,7 @@ public class FlowerHitRepositoryImpl implements FlowerHitRepositoryCustom {
 	private final JPAQueryFactory queryFactory;
 
 	@Override
-	public FlowerHit findFlowerHitByFlower(Flower flower) {
+	public FlowerHit findFlowerHitByFlowerForUpdate(Flower flower) {
 		return queryFactory
 			.selectFrom(flowerHit)
 			.where(flowerHit.flower.eq(flower))
