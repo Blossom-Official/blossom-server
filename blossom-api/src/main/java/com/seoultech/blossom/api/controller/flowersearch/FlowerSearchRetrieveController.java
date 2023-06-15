@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.seoultech.blossom.api.service.flowersearch.FlowerSearchRetrieveService;
 import com.seoultech.blossom.api.service.flowersearch.dto.response.FlowerSearchResponse;
+import com.seoultech.blossom.api.service.flowersearch.dto.response.PopularResponse;
 import com.seoultech.blossom.common.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,4 +31,9 @@ public class FlowerSearchRetrieveController {
 		return ApiResponse.success(flowerSearchRetrieveService.searchFlowers(searchText));
 	}
 
+	@Operation(summary = "인기 검색어 조회")
+	@GetMapping("/flower-search/popular")
+	public ApiResponse<PopularResponse> getPopular() {
+		return ApiResponse.success(flowerSearchRetrieveService.getPopular());
+	}
 }

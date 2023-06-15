@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seoultech.blossom.api.service.flowersearch.dto.response.FlowerSearchResponse;
+import com.seoultech.blossom.api.service.flowersearch.dto.response.PopularResponse;
 import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.flower.FlowerDocument;
+import com.seoultech.blossom.domain.domain.flower.FlowerTag;
 import com.seoultech.blossom.domain.domain.flower.repository.FlowerRepository;
 import com.seoultech.blossom.domain.domain.flower.repository.FlowerSearchQueryRepository;
 import com.seoultech.blossom.domain.domain.flowersearch.FlowerHit;
@@ -45,4 +47,14 @@ public class FlowerSearchRetrieveService {
 		return FlowerSearchResponse.of(flowerDocuments);
 	}
 
+	public PopularResponse getPopular() {
+		List<FlowerHit> flowerHits = flowerHitRepository.findFlowerHitsOrderByCountAndModifiedAt();
+		List<String> tags = flowerHits.stream()
+			.flatMap(flowerHit -> flowerHit.getFlower().getFlowerTags().stream())
+			.map(FlowerTag::getName)
+			.distinct()
+			.limit(3)
+			.collect(Collectors.toList());
+		return PopularResponse.of(tags);
+	}
 }
