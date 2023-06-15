@@ -3,8 +3,8 @@ package com.seoultech.blossom.api.service.flower.dto;
 import java.util.Comparator;
 
 import com.seoultech.blossom.domain.domain.flower.Flower;
-import com.seoultech.blossom.domain.domain.flower.FlowerDocument;
 import com.seoultech.blossom.domain.domain.flower.FlowerImage;
+import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;

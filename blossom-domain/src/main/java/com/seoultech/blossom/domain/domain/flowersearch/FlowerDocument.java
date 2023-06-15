@@ -1,4 +1,4 @@
-package com.seoultech.blossom.domain.domain.flower;
+package com.seoultech.blossom.domain.domain.flowersearch;
 
 import java.util.Comparator;
 import java.util.List;
@@ -9,6 +9,11 @@ import javax.persistence.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import com.seoultech.blossom.domain.domain.flower.Flower;
+import com.seoultech.blossom.domain.domain.flower.FlowerImage;
+import com.seoultech.blossom.domain.domain.flower.FlowerLanguage;
+import com.seoultech.blossom.domain.domain.flower.FlowerTag;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

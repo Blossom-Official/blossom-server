@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.seoultech.blossom.domain.domain.flower.Flower;
-import com.seoultech.blossom.domain.domain.flower.FlowerDocument;
 import com.seoultech.blossom.domain.domain.flower.repository.FlowerRepository;
-import com.seoultech.blossom.domain.domain.flower.repository.FlowerSearchRepository;
+import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
+import com.seoultech.blossom.domain.domain.flowersearch.repository.FlowerSearchRepository;
 
 import lombok.RequiredArgsConstructor;
 

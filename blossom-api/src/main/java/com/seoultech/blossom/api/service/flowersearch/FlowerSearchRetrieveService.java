@@ -9,12 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.seoultech.blossom.api.service.flowersearch.dto.response.FlowerSearchResponse;
 import com.seoultech.blossom.api.service.flowersearch.dto.response.PopularResponse;
 import com.seoultech.blossom.domain.domain.flower.Flower;
-import com.seoultech.blossom.domain.domain.flower.FlowerDocument;
 import com.seoultech.blossom.domain.domain.flower.FlowerTag;
 import com.seoultech.blossom.domain.domain.flower.repository.FlowerRepository;
-import com.seoultech.blossom.domain.domain.flower.repository.FlowerSearchQueryRepository;
+import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
 import com.seoultech.blossom.domain.domain.flowersearch.FlowerHit;
 import com.seoultech.blossom.domain.domain.flowersearch.repository.FlowerHitRepository;
+import com.seoultech.blossom.domain.domain.flowersearch.repository.FlowerSearchQueryRepository;
 
 import lombok.RequiredArgsConstructor;
 

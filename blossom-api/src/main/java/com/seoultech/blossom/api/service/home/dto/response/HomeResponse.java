@@ -1,10 +1,12 @@
-package com.seoultech.blossom.api.service.flowersearch.dto.response;
+package com.seoultech.blossom.api.service.home.dto.response;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.seoultech.blossom.api.service.content.dto.ContentSummaryInfo;
 import com.seoultech.blossom.api.service.flower.dto.FlowerInfo;
-import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
+import com.seoultech.blossom.domain.domain.content.Content;
+import com.seoultech.blossom.domain.domain.flower.Flower;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -19,17 +21,20 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(access = AccessLevel.PRIVATE)
-public class FlowerSearchResponse {
+public class HomeResponse {
 
-	@Schema(description = "총 개수")
-	private int totalCount;
+	@Schema(description = "컨텐츠")
+	private List<ContentSummaryInfo> contents;
 
-	@Schema(description = "꽃")
+	@Schema(description = "인기 꽃")
 	private List<FlowerInfo> flowers;
 
-	public static FlowerSearchResponse of(List<FlowerDocument> flowers) {
-		return FlowerSearchResponse.builder()
-			.totalCount(flowers.size())
+	public static HomeResponse of(List<Content> contents, List<Flower> flowers) {
+		return HomeResponse.builder()
+			.contents(contents
+				.stream()
+				.map(ContentSummaryInfo::of)
+				.collect(Collectors.toList()))
 			.flowers(flowers
 				.stream()
 				.map(FlowerInfo::of)
