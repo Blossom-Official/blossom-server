@@ -1,4 +1,4 @@
-package com.seoultech.blossom.domain.domain.flower.repository;
+package com.seoultech.blossom.domain.domain.flowersearch.repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +13,7 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import com.seoultech.blossom.domain.domain.flower.FlowerDocument;
+import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
 
 import lombok.RequiredArgsConstructor;
 

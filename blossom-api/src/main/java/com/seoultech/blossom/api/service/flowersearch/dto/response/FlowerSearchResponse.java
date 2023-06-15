@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.seoultech.blossom.api.service.flower.dto.FlowerInfo;
-import com.seoultech.blossom.domain.domain.flower.FlowerDocument;
+import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
