@@ -27,3 +27,14 @@ services:
       - "mode=standalone"
     ports:
       - 6389:6379
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
+    container_name: blossom-elasticsearch
+    environment:
+      - node.name=single-node
+      - cluster.name=blossom
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+      - 9300:9300
