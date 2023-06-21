@@ -10,6 +10,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import com.seoultech.blossom.domain.domain.content.Content;
+import com.seoultech.blossom.domain.domain.content.ContentInfo;
 import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.flower.FlowerImage;
 import com.seoultech.blossom.domain.domain.flower.FlowerLanguage;
@@ -49,6 +51,27 @@ public class FlowerDocument {
 	@Field(type = FieldType.Text)
 	private List<String> flowerLanguages;
 
+	private List<ContentSummaryInfo> contentSummaryInfos;
+
+	@Getter
+	@AllArgsConstructor(access = AccessLevel.PRIVATE)
+	@Builder(access = AccessLevel.PRIVATE)
+	public static class ContentSummaryInfo {
+		private Long contentId;
+		private String imageUrl;
+
+		private static ContentSummaryInfo of(Content content) {
+			return ContentSummaryInfo.builder()
+				.contentId(content.getId())
+				.imageUrl(content.getContentInfos()
+					.stream()
+					.min(Comparator.comparing(ContentInfo::getOrder))
+					.get()
+					.getContentImageUrl())
+				.build();
+		}
+	}
+
 	public static FlowerDocument of(Flower flower) {
 		return FlowerDocument.builder()
 			.id(flower.getId())
@@ -67,6 +90,10 @@ public class FlowerDocument {
 			.flowerLanguages(flower.getFlowerLanguages()
 				.stream()
 				.map(FlowerLanguage::getName)
+				.collect(Collectors.toList()))
+			.contentSummaryInfos(flower.getFlowerContents()
+				.stream()
+				.map(flowerContent -> ContentSummaryInfo.of(flowerContent.getContent()))
 				.collect(Collectors.toList()))
 			.build();
 	}

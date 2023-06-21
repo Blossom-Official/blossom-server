@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import com.seoultech.blossom.domain.domain.content.Content;
 import com.seoultech.blossom.domain.domain.content.ContentInfo;
+import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -26,6 +27,16 @@ public class ContentSummaryInfo {
 	@Schema(description = "썸네일")
 	private String imageUrl;
 
+	@Override
+	public boolean equals(Object o) {
+		return this.contentId.equals(((ContentSummaryInfo)o).contentId);
+	}
+
+	@Override
+	public int hashCode() {
+		return this.contentId.hashCode();
+	}
+
 	public static ContentSummaryInfo of(Content content) {
 		return ContentSummaryInfo.builder()
 			.contentId(content.getId())
@@ -34,6 +45,13 @@ public class ContentSummaryInfo {
 				.min(Comparator.comparing(ContentInfo::getOrder))
 				.get()
 				.getContentImageUrl())
+			.build();
+	}
+
+	public static ContentSummaryInfo of(FlowerDocument.ContentSummaryInfo contentSummaryInfo) {
+		return ContentSummaryInfo.builder()
+			.contentId(contentSummaryInfo.getContentId())
+			.imageUrl(contentSummaryInfo.getImageUrl())
 			.build();
 	}
 }
