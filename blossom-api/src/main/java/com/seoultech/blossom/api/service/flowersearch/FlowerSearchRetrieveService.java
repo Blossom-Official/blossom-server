@@ -29,7 +29,7 @@ public class FlowerSearchRetrieveService {
 
 	@Transactional
 	public FlowerSearchResponse searchFlowers(String searchText) {
-		List<FlowerDocument> flowerDocuments = flowerSearchQueryRepository.findByCondition(searchText);
+		List<FlowerDocument> flowerDocuments = flowerSearchQueryRepository.searchFlowerDocuments(searchText);
 		List<Flower> flowers = flowerDocuments
 			.stream()
 			.map(flowerDocument -> flowerRepository.findFlowerById(flowerDocument.getId()))
