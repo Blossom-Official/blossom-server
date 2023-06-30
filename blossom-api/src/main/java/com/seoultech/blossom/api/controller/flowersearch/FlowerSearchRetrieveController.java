@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seoultech.blossom.api.service.flowersearch.FlowerSearchRetrieveService;
+import com.seoultech.blossom.api.service.flowersearch.dto.response.AutocompleteResponse;
 import com.seoultech.blossom.api.service.flowersearch.dto.response.FlowerSearchResponse;
 import com.seoultech.blossom.api.service.flowersearch.dto.response.PopularResponse;
 import com.seoultech.blossom.common.dto.ApiResponse;
@@ -35,5 +36,13 @@ public class FlowerSearchRetrieveController {
 	@GetMapping("/flower-search/popular")
 	public ApiResponse<PopularResponse> getPopular() {
 		return ApiResponse.success(flowerSearchRetrieveService.getPopular());
+	}
+
+	@Operation(summary = "자동완성 검색어 조회")
+	@GetMapping("/flower-search/autocomplete")
+	public ApiResponse<AutocompleteResponse> getAutocomplete(
+		@Parameter(description = "검색어", required = false, example = "꽃") @RequestParam String searchText
+	) {
+		return ApiResponse.success(flowerSearchRetrieveService.getAutocomplete(searchText));
 	}
 }

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.seoultech.blossom.api.service.flowersearch.dto.response.AutocompleteResponse;
 import com.seoultech.blossom.api.service.flowersearch.dto.response.FlowerSearchResponse;
 import com.seoultech.blossom.api.service.flowersearch.dto.response.PopularResponse;
 import com.seoultech.blossom.domain.domain.flower.Flower;
@@ -29,7 +30,7 @@ public class FlowerSearchRetrieveService {
 
 	@Transactional
 	public FlowerSearchResponse searchFlowers(String searchText) {
-		List<FlowerDocument> flowerDocuments = flowerSearchQueryRepository.findByCondition(searchText);
+		List<FlowerDocument> flowerDocuments = flowerSearchQueryRepository.searchFlowerDocuments(searchText);
 		List<Flower> flowers = flowerDocuments
 			.stream()
 			.map(flowerDocument -> flowerRepository.findFlowerById(flowerDocument.getId()))
@@ -56,5 +57,10 @@ public class FlowerSearchRetrieveService {
 			.limit(3)
 			.collect(Collectors.toList());
 		return PopularResponse.of(tags);
+	}
+
+	public AutocompleteResponse getAutocomplete(String searchText) {
+		List<String> autocompletes = flowerSearchQueryRepository.searchAutocompletes(searchText);
+		return AutocompleteResponse.of(autocompletes);
 	}
 }
