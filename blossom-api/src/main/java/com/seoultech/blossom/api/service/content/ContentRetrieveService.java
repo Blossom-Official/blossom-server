@@ -1,5 +1,8 @@
 package com.seoultech.blossom.api.service.content;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +21,9 @@ public class ContentRetrieveService {
 
 	public ContentResponse getContentById(Long contentId) {
 		Content content = ContentServiceUtils.findContentById(contentRepository, contentId);
-		return ContentResponse.of(content);
+		List<Content> moreContents = contentRepository.findAll();
+		moreContents.remove(content);
+		Collections.shuffle(moreContents);
+		return ContentResponse.of(content, moreContents);
 	}
 }

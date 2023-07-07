@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `FLOWER_CONTENT`;
 DROP TABLE IF EXISTS `FLOWER_LIKE`;
 DROP TABLE IF EXISTS `FLOWER_HIT`;
 DROP TABLE IF EXISTS `CONTENT`;
-DROP TABLE IF EXISTS `CONTENT_INFO`;
+DROP TABLE IF EXISTS `CONTENT_INFORMATION`;
 
 CREATE TABLE `USER`
 (
@@ -122,19 +122,27 @@ CREATE TABLE `FLOWER_HIT`
 
 CREATE TABLE `CONTENT`
 (
-    `CONTENT_ID`  bigint auto_increment primary key,
-    `CREATED_AT`  datetime NOT NULL,
-    `MODIFIED_AT` datetime NOT NULL
+    `CONTENT_ID`        bigint auto_increment primary key,
+    `TITLE`             varchar(100)  NOT NULL,
+    `SUBTITLE`          varchar(100)  NOT NULL,
+    `DESCRIPTION`       varchar(1000) NOT NULL,
+    `CONTENT_IMAGE_URL` varchar(300)  NOT NULL,
+    `POSTED_AT`         datetime      NOT NULL,
+    `CREATED_AT`        datetime      NOT NULL,
+    `MODIFIED_AT`       datetime      NOT NULL
 );
 
-CREATE TABLE `CONTENT_INFO`
+CREATE TABLE `CONTENT_INFORMATION`
 (
-    `CONTENT_INFO_ID`   bigint auto_increment primary key,
-    `CONTENT_ID`        bigint       NOT NULL,
-    `CONTENT_IMAGE_URL` varchar(300) NOT NULL,
-    `ORDER`             int          NOT NULL,
-    `LINK_YN`           boolean      NOT NULL,
-    `LINK_URL`          varchar(300) NULL,
-    `CREATED_AT`        datetime     NOT NULL,
-    `MODIFIED_AT`       datetime     NOT NULL
+    `CONTENT_INFORMATION_ID` bigint auto_increment primary key,
+    `CONTENT_ID`             bigint        NOT NULL,
+    `TITLE`                  varchar(100)  NOT NULL,
+    `SUBTITLE`               varchar(100)  NOT NULL,
+    `DESCRIPTION`            varchar(1000) NOT NULL,
+    `CONTENT_IMAGE_URL`      varchar(300)  NOT NULL,
+    `ORDER`                  int           NOT NULL,
+    `LINK_YN`                boolean       NOT NULL,
+    `LINK_URL`               varchar(300) NULL,
+    `CREATED_AT`             datetime      NOT NULL,
+    `MODIFIED_AT`            datetime      NOT NULL
 );

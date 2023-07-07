@@ -18,22 +18,31 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "CONTENT_INFO")
+@Table(name = "CONTENT_INFORMATION")
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(access = AccessLevel.PRIVATE)
-public class ContentInfo extends BaseEntity {
+public class ContentInformation extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CONTENT_INFO_ID")
+	@Column(name = "CONTENT_INFORMATION_ID")
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CONTENT_ID", nullable = false)
 	private Content content;
+
+	@Column(name = "TITLE", nullable = false, length = 100)
+	private String title;
+
+	@Column(name = "SUBTITLE", nullable = false, length = 100)
+	private String subtitle;
+
+	@Column(name = "DESCRIPTION", nullable = false, length = 1000)
+	private String description;
 
 	@Column(name = "CONTENT_IMAGE_URL", nullable = false, length = 300)
 	private String contentImageUrl;

@@ -11,7 +11,6 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import com.seoultech.blossom.domain.domain.content.Content;
-import com.seoultech.blossom.domain.domain.content.ContentInfo;
 import com.seoultech.blossom.domain.domain.flower.Flower;
 import com.seoultech.blossom.domain.domain.flower.FlowerImage;
 import com.seoultech.blossom.domain.domain.flower.FlowerLanguage;
@@ -59,15 +58,15 @@ public class FlowerDocument {
 	public static class ContentSummaryInfo {
 		private Long contentId;
 		private String imageUrl;
+		private String title;
+		private String subtitle;
 
 		private static ContentSummaryInfo of(Content content) {
 			return ContentSummaryInfo.builder()
 				.contentId(content.getId())
-				.imageUrl(content.getContentInfos()
-					.stream()
-					.min(Comparator.comparing(ContentInfo::getOrder))
-					.get()
-					.getContentImageUrl())
+				.imageUrl(content.getContentImageUrl())
+				.title(content.getTitle())
+				.subtitle(content.getSubtitle())
 				.build();
 		}
 	}

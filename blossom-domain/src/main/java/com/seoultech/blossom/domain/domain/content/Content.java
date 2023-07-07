@@ -1,5 +1,6 @@
 package com.seoultech.blossom.domain.domain.content;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,21 @@ public class Content extends BaseEntity {
 	@Column(name = "CONTENT_ID")
 	private Long id;
 
+	@Column(name = "TITLE", nullable = false, length = 100)
+	private String title;
+
+	@Column(name = "SUBTITLE", nullable = false, length = 100)
+	private String subtitle;
+
+	@Column(name = "DESCRIPTION", nullable = false, length = 1000)
+	private String description;
+
+	@Column(name = "CONTENT_IMAGE_URL", nullable = false, length = 300)
+	private String contentImageUrl;
+
+	@Column(name = "POSTED_AT", nullable = false, length = 300)
+	private LocalDate postedAt;
+
 	@OneToMany(mappedBy = "content", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private final List<ContentInfo> contentInfos = new ArrayList<>();
+	private final List<ContentInformation> contentInformations = new ArrayList<>();
 }

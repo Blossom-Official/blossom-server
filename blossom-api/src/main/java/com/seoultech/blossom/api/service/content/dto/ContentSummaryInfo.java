@@ -1,9 +1,6 @@
 package com.seoultech.blossom.api.service.content.dto;
 
-import java.util.Comparator;
-
 import com.seoultech.blossom.domain.domain.content.Content;
-import com.seoultech.blossom.domain.domain.content.ContentInfo;
 import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -27,6 +24,12 @@ public class ContentSummaryInfo {
 	@Schema(description = "썸네일")
 	private String imageUrl;
 
+	@Schema(description = "제목")
+	private String title;
+
+	@Schema(description = "부제목")
+	private String subtitle;
+
 	@Override
 	public boolean equals(Object o) {
 		return this.contentId.equals(((ContentSummaryInfo)o).contentId);
@@ -40,11 +43,9 @@ public class ContentSummaryInfo {
 	public static ContentSummaryInfo of(Content content) {
 		return ContentSummaryInfo.builder()
 			.contentId(content.getId())
-			.imageUrl(content.getContentInfos()
-				.stream()
-				.min(Comparator.comparing(ContentInfo::getOrder))
-				.get()
-				.getContentImageUrl())
+			.imageUrl(content.getContentImageUrl())
+			.title(content.getTitle())
+			.subtitle(content.getSubtitle())
 			.build();
 	}
 
@@ -52,6 +53,8 @@ public class ContentSummaryInfo {
 		return ContentSummaryInfo.builder()
 			.contentId(contentSummaryInfo.getContentId())
 			.imageUrl(contentSummaryInfo.getImageUrl())
+			.title(contentSummaryInfo.getTitle())
+			.subtitle(contentSummaryInfo.getSubtitle())
 			.build();
 	}
 }
