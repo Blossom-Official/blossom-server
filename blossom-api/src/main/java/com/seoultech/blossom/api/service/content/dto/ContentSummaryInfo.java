@@ -1,9 +1,6 @@
 package com.seoultech.blossom.api.service.content.dto;
 
-import java.util.Comparator;
-
 import com.seoultech.blossom.domain.domain.content.Content;
-import com.seoultech.blossom.domain.domain.content.ContentInfo;
 import com.seoultech.blossom.domain.domain.flowersearch.FlowerDocument;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -40,11 +37,7 @@ public class ContentSummaryInfo {
 	public static ContentSummaryInfo of(Content content) {
 		return ContentSummaryInfo.builder()
 			.contentId(content.getId())
-			.imageUrl(content.getContentInfos()
-				.stream()
-				.min(Comparator.comparing(ContentInfo::getOrder))
-				.get()
-				.getContentImageUrl())
+			.imageUrl(content.getContentImageUrl())
 			.build();
 	}
 

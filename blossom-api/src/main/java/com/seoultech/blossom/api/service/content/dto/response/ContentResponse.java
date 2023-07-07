@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import com.seoultech.blossom.api.service.content.dto.ContentDetailInfo;
 import com.seoultech.blossom.domain.domain.content.Content;
-import com.seoultech.blossom.domain.domain.content.ContentInfo;
+import com.seoultech.blossom.domain.domain.content.ContentInformation;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -32,9 +32,9 @@ public class ContentResponse {
 	public static ContentResponse of(Content content) {
 		return ContentResponse.builder()
 			.contentId(content.getId())
-			.contentDetailInfos(content.getContentInfos()
+			.contentDetailInfos(content.getContentInformations()
 				.stream()
-				.sorted(Comparator.comparingInt(ContentInfo::getOrder))
+				.sorted(Comparator.comparingInt(ContentInformation::getOrder))
 				.map(ContentDetailInfo::of)
 				.collect(Collectors.toList()))
 			.build();

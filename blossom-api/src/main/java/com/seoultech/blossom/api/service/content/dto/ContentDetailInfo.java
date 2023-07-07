@@ -1,6 +1,6 @@
 package com.seoultech.blossom.api.service.content.dto;
 
-import com.seoultech.blossom.domain.domain.content.ContentInfo;
+import com.seoultech.blossom.domain.domain.content.ContentInformation;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -26,11 +26,11 @@ public class ContentDetailInfo {
 	@Schema(description = "링크 url")
 	private String linkUrl;
 
-	public static ContentDetailInfo of(ContentInfo contentInfo) {
+	public static ContentDetailInfo of(ContentInformation contentInformation) {
 		return ContentDetailInfo.builder()
-			.contentImageUrl(contentInfo.getContentImageUrl())
-			.hasLink(contentInfo.getLinkYn())
-			.linkUrl(contentInfo.getLinkUrl())
+			.contentImageUrl(contentInformation.getContentImageUrl())
+			.hasLink(contentInformation.getLinkYn())
+			.linkUrl(contentInformation.getLinkUrl())
 			.build();
 	}
 }
