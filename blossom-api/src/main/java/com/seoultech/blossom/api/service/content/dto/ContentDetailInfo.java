@@ -17,6 +17,15 @@ import lombok.ToString;
 @Builder(access = AccessLevel.PRIVATE)
 public class ContentDetailInfo {
 
+	@Schema(description = "제목")
+	private String title;
+
+	@Schema(description = "부제목")
+	private String subtitle;
+
+	@Schema(description = "설명")
+	private String description;
+
 	@Schema(description = "이미지 url")
 	private String contentImageUrl;
 
@@ -28,6 +37,9 @@ public class ContentDetailInfo {
 
 	public static ContentDetailInfo of(ContentInformation contentInformation) {
 		return ContentDetailInfo.builder()
+			.title(contentInformation.getTitle())
+			.subtitle(contentInformation.getSubtitle())
+			.description(contentInformation.getDescription())
 			.contentImageUrl(contentInformation.getContentImageUrl())
 			.hasLink(contentInformation.getLinkYn())
 			.linkUrl(contentInformation.getLinkUrl())
