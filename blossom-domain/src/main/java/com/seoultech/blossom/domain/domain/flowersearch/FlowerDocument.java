@@ -58,11 +58,15 @@ public class FlowerDocument {
 	public static class ContentSummaryInfo {
 		private Long contentId;
 		private String imageUrl;
+		private String title;
+		private String subtitle;
 
 		private static ContentSummaryInfo of(Content content) {
 			return ContentSummaryInfo.builder()
 				.contentId(content.getId())
 				.imageUrl(content.getContentImageUrl())
+				.title(content.getTitle())
+				.subtitle(content.getSubtitle())
 				.build();
 		}
 	}

@@ -24,6 +24,12 @@ public class ContentSummaryInfo {
 	@Schema(description = "썸네일")
 	private String imageUrl;
 
+	@Schema(description = "제목")
+	private String title;
+
+	@Schema(description = "부제목")
+	private String subtitle;
+
 	@Override
 	public boolean equals(Object o) {
 		return this.contentId.equals(((ContentSummaryInfo)o).contentId);
@@ -38,6 +44,8 @@ public class ContentSummaryInfo {
 		return ContentSummaryInfo.builder()
 			.contentId(content.getId())
 			.imageUrl(content.getContentImageUrl())
+			.title(content.getTitle())
+			.subtitle(content.getSubtitle())
 			.build();
 	}
 
@@ -45,6 +53,8 @@ public class ContentSummaryInfo {
 		return ContentSummaryInfo.builder()
 			.contentId(contentSummaryInfo.getContentId())
 			.imageUrl(contentSummaryInfo.getImageUrl())
+			.title(contentSummaryInfo.getTitle())
+			.subtitle(contentSummaryInfo.getSubtitle())
 			.build();
 	}
 }
