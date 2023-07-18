@@ -2,6 +2,7 @@ package com.seoultech.blossom.domain.domain.flower;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -78,4 +79,21 @@ public class Flower extends BaseEntity {
 
 	@OneToMany(mappedBy = "flower", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private final List<FlowerContent> flowerContents = new ArrayList<>();
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof Flower)) {
+			return false;
+		}
+		Flower flower = (Flower)o;
+		return this.getId().equals(flower.getId());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getId());
+	}
 }
