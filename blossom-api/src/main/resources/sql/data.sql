@@ -134,3 +134,43 @@ VALUES (1, 1, "클래스 아홈", "서울 성동구 성수일로3길 5-15",
        (4, 1, "무아 플라워스튜디오", "서울 종로구 필운대로 51 3층",
         "핸드타이드, 화병 꽂이, 화기 꽂이, 서머 바스켓, 플라워 박스까지! 주말 오전과 오후에 항상 열려있는 무아의 원 데이 클래스에서 만들어보고 시도해 보고 싶었던 꽃 디자인을 모두 체험해 보아요!",
         "content 1 image url 5", 5, true, "https://www.instagram.com/mua_flowerstudio/", "2023-01-01", "2023-01-01");
+
+INSERT INTO FLOWER_RECOMMEND_RELATIONSHIP
+(FLOWER_RECOMMEND_RELATIONSHIP_ID, FLOWER_ID, RELATIONSHIP, CREATED_AT, MODIFIED_AT)
+VALUES (1, 1, "FRIEND", "2023-01-01", "2023-01-01"),
+       (2, 2, "LOVER", "2023-01-01", "2023-01-01"),
+       (3, 3, "LOVER", "2023-01-01", "2023-01-01"),
+       (4, 4, "FAMILY", "2023-01-01", "2023-01-01"),
+       (5, 5, "ACQUAINTANCE", "2023-01-01", "2023-01-01");
+
+INSERT INTO FLOWER_RECOMMEND_AGE
+    (FLOWER_RECOMMEND_AGE_ID, FLOWER_ID, AGE, CREATED_AT, MODIFIED_AT)
+VALUES (1, 1, "TWENTY", "2023-01-01", "2023-01-01"),
+       (2, 2, "TWENTY", "2023-01-01", "2023-01-01"),
+       (3, 3, "THIRTY", "2023-01-01", "2023-01-01"),
+       (4, 4, "FORTY", "2023-01-01", "2023-01-01"),
+       (5, 5, "ABOVE", "2023-01-01", "2023-01-01");
+
+INSERT INTO FLOWER_RECOMMEND_MIND
+    (FLOWER_RECOMMEND_MIND_ID, FLOWER_ID, MIND, CREATED_AT, MODIFIED_AT)
+VALUES (1, 1, "GREETING", "2023-01-01", "2023-01-01"),
+       (2, 2, "RESPECT", "2023-01-01", "2023-01-01"),
+       (3, 3, "THANKS", "2023-01-01", "2023-01-01"),
+       (4, 4, "LOVE", "2023-01-01", "2023-01-01"),
+       (5, 5, "CONSOLATION", "2023-01-01", "2023-01-01");
+
+INSERT INTO FLOWER_RECOMMEND_COLOR
+    (FLOWER_RECOMMEND_COLOR_ID, FLOWER_ID, COLOR, CREATED_AT, MODIFIED_AT)
+VALUES (1, 1, "RED_ORANGE", "2023-01-01", "2023-01-01"),
+       (2, 2, "RED_ORANGE", "2023-01-01", "2023-01-01"),
+       (3, 3, "RED_ORANGE", "2023-01-01", "2023-01-01"),
+       (4, 4, "GREEN", "2023-01-01", "2023-01-01"),
+       (5, 5, "BLUE_PURPLE", "2023-01-01", "2023-01-01");
+
+INSERT INTO FLOWER_RECOMMEND_VIBE
+    (FLOWER_RECOMMEND_VIBE_ID, FLOWER_ID, VIBE, CREATED_AT, MODIFIED_AT)
+VALUES (1, 1, "COLD_HAUGHTY", "2023-01-01", "2023-01-01"),
+       (2, 2, "BRIGHT_LOVELY", "2023-01-01", "2023-01-01"),
+       (3, 3, "BRIGHT_LOVELY", "2023-01-01", "2023-01-01"),
+       (4, 4, "QUIET_CALM", "2023-01-01", "2023-01-01"),
+       (5, 5, "ACTIVE", "2023-01-01", "2023-01-01");
