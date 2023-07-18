@@ -52,10 +52,10 @@ public class FlowerRecommendRetrieveService {
 		Set<Flower> flowers = getFlowersFilteredByColor(color);
 
 		// 2. 개화 시기 맞는 꽃 필터링, 없을 경우 그대로 유지
-		filterByFlowerTime(flowers, LocalDate.now().getMonthValue());
+		flowers = filterByFlowerTime(flowers, LocalDate.now().getMonthValue());
 
 		// 3. 나머지 4가지 조건에 가장 많이 부합하는 꽃들 필터링
-		filterByRelevance(flowers, relationship, age, mind, vibe);
+		flowers = filterByRelevance(flowers, relationship, age, mind, vibe);
 
 		// 4. 필터링된 꽃들 중 랜덤으로 하나 선택
 		Flower flower = getRandomFlower(flowers);
@@ -71,7 +71,7 @@ public class FlowerRecommendRetrieveService {
 			.collect(Collectors.toSet());
 	}
 
-	private void filterByFlowerTime(Set<Flower> flowers, int month) {
+	private Set<Flower> filterByFlowerTime(Set<Flower> flowers, int month) {
 		Set<Flower> result = new HashSet<>();
 		flowers.forEach(flower -> {
 			if (flower.getFlowerTimes().stream().anyMatch(flowerTime -> flowerTime.getMonth() == month)) {
@@ -79,17 +79,18 @@ public class FlowerRecommendRetrieveService {
 			}
 		});
 		if (!result.isEmpty()) {
-			flowers = result;
+			return result;
 		}
+		return flowers;
 	}
 
-	private void filterByRelevance(Set<Flower> flowers,
+	private Set<Flower> filterByRelevance(Set<Flower> flowers,
 		FlowerRelationship relationship, FlowerAge age, FlowerMind mind, FlowerVibe vibe) {
 		Map<Flower, Integer> relevanceCount = getRelevanceCountMap(flowers, relationship, age, mind, vibe);
 		int max = relevanceCount.keySet().stream()
 			.mapToInt(relevanceCount::get)
 			.max().getAsInt();
-		flowers = flowers.stream()
+		return flowers.stream()
 			.filter(flower -> relevanceCount.get(flower) == max)
 			.collect(Collectors.toSet());
 	}
