@@ -11,6 +11,11 @@ DROP TABLE IF EXISTS `FLOWER_LIKE`;
 DROP TABLE IF EXISTS `FLOWER_HIT`;
 DROP TABLE IF EXISTS `CONTENT`;
 DROP TABLE IF EXISTS `CONTENT_INFORMATION`;
+DROP TABLE IF EXISTS `FLOWER_RECOMMEND_RELATIONSHIP`;
+DROP TABLE IF EXISTS `FLOWER_RECOMMEND_AGE`;
+DROP TABLE IF EXISTS `FLOWER_RECOMMEND_MIND`;
+DROP TABLE IF EXISTS `FLOWER_RECOMMEND_COLOR`;
+DROP TABLE IF EXISTS `FLOWER_RECOMMEND_VIBE`;
 
 CREATE TABLE `USER`
 (
@@ -145,4 +150,49 @@ CREATE TABLE `CONTENT_INFORMATION`
     `LINK_URL`               varchar(300) NULL,
     `CREATED_AT`             datetime      NOT NULL,
     `MODIFIED_AT`            datetime      NOT NULL
+);
+
+CREATE TABLE `FLOWER_RECOMMEND_RELATIONSHIP`
+(
+    `FLOWER_RECOMMEND_RELATIONSHIP_ID` bigint auto_increment primary key,
+    `FLOWER_ID`                        bigint      NOT NULL,
+    `RELATIONSHIP`                     varchar(30) NOT NULL,
+    `CREATED_AT`                       datetime    NOT NULL,
+    `MODIFIED_AT`                      datetime    NOT NULL
+);
+
+CREATE TABLE `FLOWER_RECOMMEND_AGE`
+(
+    `FLOWER_RECOMMEND_AGE_ID` bigint auto_increment primary key,
+    `FLOWER_ID`               bigint      NOT NULL,
+    `AGE`                     varchar(30) NOT NULL,
+    `CREATED_AT`              datetime    NOT NULL,
+    `MODIFIED_AT`             datetime    NOT NULL
+);
+
+CREATE TABLE `FLOWER_RECOMMEND_MIND`
+(
+    `FLOWER_RECOMMEND_MIND_ID` bigint auto_increment primary key,
+    `FLOWER_ID`                bigint      NOT NULL,
+    `MIND`                     varchar(30) NOT NULL,
+    `CREATED_AT`               datetime    NOT NULL,
+    `MODIFIED_AT`              datetime    NOT NULL
+);
+
+CREATE TABLE `FLOWER_RECOMMEND_COLOR`
+(
+    `FLOWER_RECOMMEND_COLOR_ID` bigint auto_increment primary key,
+    `FLOWER_ID`                 bigint      NOT NULL,
+    `COLOR`                     varchar(30) NOT NULL,
+    `CREATED_AT`                datetime    NOT NULL,
+    `MODIFIED_AT`               datetime    NOT NULL
+);
+
+CREATE TABLE `FLOWER_RECOMMEND_VIBE`
+(
+    `FLOWER_RECOMMEND_VIBE_ID` bigint auto_increment primary key,
+    `FLOWER_ID`                bigint      NOT NULL,
+    `VIBE`                     varchar(30) NOT NULL,
+    `CREATED_AT`               datetime    NOT NULL,
+    `MODIFIED_AT`              datetime    NOT NULL
 );
