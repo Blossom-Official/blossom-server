@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.seoultech.blossom.api.service.service.SlackService;
 import com.seoultech.blossom.common.dto.ApiResponse;
 import com.seoultech.blossom.common.exception.BadGatewayException;
 import com.seoultech.blossom.common.exception.ConflictException;
@@ -32,6 +33,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @RestControllerAdvice
 public class ControllerAdvice {
+
+	private final SlackService slackService;
 
 	/**
 	 * 400 BadRequest
@@ -136,6 +139,7 @@ public class ControllerAdvice {
 	@ExceptionHandler(BadGatewayException.class)
 	protected ApiResponse<Object> handleBadGatewayException(final BadGatewayException exception) {
 		log.error(exception.getMessage(), exception);
+		slackService.sendSlackMessageProductError(exception);
 		return ApiResponse.error(exception.getErrorCode());
 	}
 
@@ -146,6 +150,7 @@ public class ControllerAdvice {
 	@ExceptionHandler(Exception.class)
 	protected ApiResponse<Object> handleException(final Exception exception) {
 		log.error(exception.getMessage(), exception);
+		slackService.sendSlackMessageProductError(exception);
 		return ApiResponse.error(INTERNAL_SERVER_EXCEPTION);
 	}
 }
