@@ -1,4 +1,4 @@
-# muyaho-api
+# blossom-api
 
 > 애플리케이션 모듈 계층 (API)
 

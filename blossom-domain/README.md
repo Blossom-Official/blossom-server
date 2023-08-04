@@ -1,4 +1,4 @@
-# muyaho-domain
+# blossom-domain
 
 > 도메인 모듈 계층
 
