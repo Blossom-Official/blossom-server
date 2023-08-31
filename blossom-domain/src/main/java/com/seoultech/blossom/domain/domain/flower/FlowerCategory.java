@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum FlowerCategory {
 
+	ALL("전체"),
 	CELEBRATE("축하"),
 	THANKS("감사"),
 	LOVE("사랑"),
