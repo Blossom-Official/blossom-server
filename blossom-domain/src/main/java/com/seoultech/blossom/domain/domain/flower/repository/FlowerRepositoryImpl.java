@@ -33,7 +33,7 @@ public class FlowerRepositoryImpl implements FlowerRepositoryCustom {
 	}
 
 	private BooleanExpression eqCategory(FlowerCategory category) {
-		if (category == null) {
+		if (category == FlowerCategory.ALL) {
 			return null;
 		}
 		return flower.category.eq(category);

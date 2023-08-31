@@ -35,7 +35,7 @@ public class FlowerRetrieveController {
 	@Operation(summary = "꽃 카테고리별 조회")
 	@GetMapping("/flower")
 	public ApiResponse<FlowerCategoryResponse> getFlowersByCategory(
-		@Parameter(description = "조회할 카테고리 (전체인 경우 null)", required = false, example = "LOVE") @RequestParam FlowerCategory category) {
+		@Parameter(description = "조회할 카테고리 (전체인 경우 ALL)", required = true, example = "LOVE") @RequestParam FlowerCategory category) {
 		return ApiResponse.success(flowerRetrieveService.getFlowersByCategory(category));
 	}
 }
