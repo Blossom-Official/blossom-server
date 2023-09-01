@@ -6,6 +6,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.seoultech.blossom.api.config.convert.FlowerCategoryConverter;
 import com.seoultech.blossom.api.config.interceptor.auth.AuthInterceptor;
 import com.seoultech.blossom.api.config.resolver.UserIdResolver;
 
@@ -40,6 +42,11 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
 		resolvers.add(userIdResolver);
+	}
+
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		registry.addConverter(new FlowerCategoryConverter());
 	}
 
 	@Bean
