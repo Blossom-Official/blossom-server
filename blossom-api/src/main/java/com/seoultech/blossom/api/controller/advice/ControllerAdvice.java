@@ -4,6 +4,7 @@ import static com.seoultech.blossom.common.exception.ErrorCode.*;
 
 import java.util.Objects;
 
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
@@ -71,6 +72,13 @@ public class ControllerAdvice {
 	protected ApiResponse<Object> handleValidationException(final ValidationException exception) {
 		log.error(exception.getMessage(), exception);
 		return ApiResponse.error(exception.getErrorCode());
+	}
+
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(TypeMismatchException.class)
+	protected ApiResponse<Object> handleTypeMismatchException(TypeMismatchException exception) {
+		log.error(exception.getMessage(), exception);
+		return ApiResponse.error(ErrorCode.VALIDATION_EXCEPTION);
 	}
 
 	/**
