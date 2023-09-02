@@ -14,7 +14,6 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.seoultech.blossom.api.config.convert.FlowerCategoryConverter;
 import com.seoultech.blossom.api.config.interceptor.auth.AuthInterceptor;
 import com.seoultech.blossom.api.config.resolver.UserIdResolver;
 
@@ -42,11 +41,6 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
 		resolvers.add(userIdResolver);
-	}
-
-	@Override
-	public void addFormatters(FormatterRegistry registry) {
-		registry.addConverter(new FlowerCategoryConverter());
 	}
 
 	@Bean
