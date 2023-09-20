@@ -20,12 +20,12 @@ import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerColor;
 import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerMind;
 import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerRecommendColor;
 import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerRelationship;
-import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerVibe;
+import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerSeason;
 import com.seoultech.blossom.domain.domain.flowerrecommend.repository.FlowerRecommendAgeRepository;
 import com.seoultech.blossom.domain.domain.flowerrecommend.repository.FlowerRecommendColorRepository;
 import com.seoultech.blossom.domain.domain.flowerrecommend.repository.FlowerRecommendMindRepository;
 import com.seoultech.blossom.domain.domain.flowerrecommend.repository.FlowerRecommendRelationshipRepository;
-import com.seoultech.blossom.domain.domain.flowerrecommend.repository.FlowerRecommendVibeRepository;
+import com.seoultech.blossom.domain.domain.flowerrecommend.repository.FlowerRecommendSeasonRepository;
 import com.seoultech.blossom.domain.domain.user.User;
 import com.seoultech.blossom.domain.domain.user.repository.UserRepository;
 
@@ -41,11 +41,11 @@ public class FlowerRecommendRetrieveService {
 	private final FlowerRecommendRelationshipRepository flowerRecommendRelationshipRepository;
 	private final FlowerRecommendAgeRepository flowerRecommendAgeRepository;
 	private final FlowerRecommendMindRepository flowerRecommendMindRepository;
-	private final FlowerRecommendVibeRepository flowerRecommendVibeRepository;
+	private final FlowerRecommendSeasonRepository flowerRecommendSeasonRepository;
 
 	public FlowerRecommendResponse recommendFlower(
 		FlowerRelationship relationship, FlowerAge age, FlowerMind mind,
-		FlowerColor color, FlowerVibe vibe, Long userId) {
+		FlowerColor color, FlowerSeason season, Long userId) {
 		User user = UserServiceUtils.findUserById(userRepository, userId);
 
 		// 1. 색으로 필터링
@@ -55,7 +55,7 @@ public class FlowerRecommendRetrieveService {
 		flowers = filterByFlowerTime(flowers, LocalDate.now().getMonthValue());
 
 		// 3. 나머지 4가지 조건에 가장 많이 부합하는 꽃들 필터링
-		flowers = filterByRelevance(flowers, relationship, age, mind, vibe);
+		flowers = filterByRelevance(flowers, relationship, age, mind, season);
 
 		// 4. 필터링된 꽃들 중 랜덤으로 하나 선택
 		Flower flower = getRandomFlower(flowers);
@@ -85,8 +85,8 @@ public class FlowerRecommendRetrieveService {
 	}
 
 	private Set<Flower> filterByRelevance(Set<Flower> flowers,
-		FlowerRelationship relationship, FlowerAge age, FlowerMind mind, FlowerVibe vibe) {
-		Map<Flower, Integer> relevanceCount = getRelevanceCountMap(flowers, relationship, age, mind, vibe);
+		FlowerRelationship relationship, FlowerAge age, FlowerMind mind, FlowerSeason season) {
+		Map<Flower, Integer> relevanceCount = getRelevanceCountMap(flowers, relationship, age, mind, season);
 		int max = relevanceCount.keySet().stream()
 			.mapToInt(relevanceCount::get)
 			.max().getAsInt();
@@ -111,7 +111,7 @@ public class FlowerRecommendRetrieveService {
 	}
 
 	private Map<Flower, Integer> getRelevanceCountMap(Set<Flower> flowers,
-		FlowerRelationship relationship, FlowerAge age, FlowerMind mind, FlowerVibe vibe) {
+		FlowerRelationship relationship, FlowerAge age, FlowerMind mind, FlowerSeason season) {
 		Map<Flower, Integer> relevanceCount = new HashMap<>();
 		for (Flower flower : flowers) {
 			relevanceCount.put(flower, 0);
@@ -128,9 +128,9 @@ public class FlowerRecommendRetrieveService {
 			.forEach(flowerRecommendMind -> {
 				countRelevanceByFlower(relevanceCount, flowerRecommendMind.getFlower());
 			});
-		flowerRecommendVibeRepository.findFlowerRecommendVibesByVibe(vibe)
-			.forEach(flowerRecommendVibe -> {
-				countRelevanceByFlower(relevanceCount, flowerRecommendVibe.getFlower());
+		flowerRecommendSeasonRepository.findFlowerRecommendSeasonsBySeason(season)
+			.forEach(flowerRecommendSeason -> {
+				countRelevanceByFlower(relevanceCount, flowerRecommendSeason.getFlower());
 			});
 		return relevanceCount;
 	}

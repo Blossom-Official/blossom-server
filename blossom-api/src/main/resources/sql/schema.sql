@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS `FLOWER_RECOMMEND_RELATIONSHIP`;
 DROP TABLE IF EXISTS `FLOWER_RECOMMEND_AGE`;
 DROP TABLE IF EXISTS `FLOWER_RECOMMEND_MIND`;
 DROP TABLE IF EXISTS `FLOWER_RECOMMEND_COLOR`;
-DROP TABLE IF EXISTS `FLOWER_RECOMMEND_VIBE`;
+DROP TABLE IF EXISTS `FLOWER_RECOMMEND_SEASON`;
 
 CREATE TABLE `USER`
 (
@@ -188,11 +188,11 @@ CREATE TABLE `FLOWER_RECOMMEND_COLOR`
     `MODIFIED_AT`               datetime    NOT NULL
 );
 
-CREATE TABLE `FLOWER_RECOMMEND_VIBE`
+CREATE TABLE `FLOWER_RECOMMEND_SEASON`
 (
-    `FLOWER_RECOMMEND_VIBE_ID` bigint auto_increment primary key,
-    `FLOWER_ID`                bigint      NOT NULL,
-    `VIBE`                     varchar(30) NOT NULL,
-    `CREATED_AT`               datetime    NOT NULL,
-    `MODIFIED_AT`              datetime    NOT NULL
+    `FLOWER_RECOMMEND_SEASON_ID` bigint auto_increment primary key,
+    `FLOWER_ID`                  bigint      NOT NULL,
+    `SEASON`                     varchar(30) NOT NULL,
+    `CREATED_AT`                 datetime    NOT NULL,
+    `MODIFIED_AT`                datetime    NOT NULL
 );
