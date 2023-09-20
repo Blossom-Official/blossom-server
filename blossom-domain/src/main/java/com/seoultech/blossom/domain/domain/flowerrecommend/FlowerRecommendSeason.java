@@ -21,24 +21,24 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "FLOWER_RECOMMEND_VIBE")
+@Table(name = "FLOWER_RECOMMEND_SEASON")
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(access = AccessLevel.PRIVATE)
-public class FlowerRecommendVibe extends BaseEntity {
+public class FlowerRecommendSeason extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "FLOWER_RECOMMEND_VIBE_ID")
+	@Column(name = "FLOWER_RECOMMEND_SEASON_ID")
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "FLOWER_ID", nullable = false)
 	private Flower flower;
 
-	@Column(name = "VIBE", nullable = false, length = 30)
+	@Column(name = "SEASON", nullable = false, length = 30)
 	@Enumerated(EnumType.STRING)
-	private FlowerVibe vibe;
+	private FlowerSeason season;
 }

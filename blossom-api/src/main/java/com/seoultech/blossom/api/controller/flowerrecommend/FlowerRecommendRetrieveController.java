@@ -14,7 +14,7 @@ import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerAge;
 import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerColor;
 import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerMind;
 import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerRelationship;
-import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerVibe;
+import com.seoultech.blossom.domain.domain.flowerrecommend.FlowerSeason;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -37,10 +37,10 @@ public class FlowerRecommendRetrieveController {
 		@Parameter(description = "나이", required = true, example = "TWENTY") @RequestParam FlowerAge age,
 		@Parameter(description = "마음", required = true, example = "GREETING") @RequestParam FlowerMind mind,
 		@Parameter(description = "색", required = true, example = "RED_ORANGE") @RequestParam FlowerColor color,
-		@Parameter(description = "분위기", required = true, example = "COLD_HAUGHTY") @RequestParam FlowerVibe vibe,
+		@Parameter(description = "계절", required = true, example = "SPRING") @RequestParam FlowerSeason season,
 		@UserId Long userId
 	) {
 		return ApiResponse.success(
-			flowerRecommendRetrieveService.recommendFlower(relationship, age, mind, color, vibe, userId));
+			flowerRecommendRetrieveService.recommendFlower(relationship, age, mind, color, season, userId));
 	}
 }
