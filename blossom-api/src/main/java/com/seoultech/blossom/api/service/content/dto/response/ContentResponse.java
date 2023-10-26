@@ -69,7 +69,7 @@ public class ContentResponse {
 			.more(moreContents
 				.stream()
 				.limit(2)
-				.map(ContentSummaryInfo::of)
+				.map(moreContent -> ContentSummaryInfo.of(moreContent, true))
 				.collect(Collectors.toList()))
 			.build();
 	}

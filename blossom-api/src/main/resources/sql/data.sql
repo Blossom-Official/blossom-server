@@ -114,17 +114,20 @@ VALUES (1, 1, 1, "2023-01-01", "2023-01-01"),
        (5, 5, 1, "2023-01-01", "2023-01-01");
 
 INSERT INTO CONTENT
-(CONTENT_ID, TITLE, SUBTITLE, DESCRIPTION, CONTENT_IMAGE_URL, POSTED_AT, CREATED_AT, MODIFIED_AT)
+(CONTENT_ID, TITLE, SUBTITLE, DESCRIPTION, CONTENT_THUMBNAIL_URL, CONTENT_IMAGE_URL, POSTED_AT, CREATED_AT, MODIFIED_AT)
 VALUES (1, "ONE DAY CLASS", "봄에는 꽃과 함께 기분전환",
         "이번 봄에는 Blossom이 추천해 주는 꽃꽂이 원 데이 클래스를 경험해 보는 건 어때요? 봄과 어울리는 다양한 꽃들로 칙칙한 나의 일상을 칠해보세요. 꽃 다발 하나로 바뀌는 방 분위기에 놀라게 될 거예요!",
+        "https://blossom-public-dev.s3.ap-northeast-2.amazonaws.com/content-image/contents1_main_s.png",
         "https://blossom-public-dev.s3.ap-northeast-2.amazonaws.com/content-image/contents1_main.png", "2023.06.27",
         "2023-01-01", "2023-01-01"),
        (2, "AUTUMN COSMOS", "가을의 꽃 코스모스, 꽃놀이 명소 추천",
         "이번 가을에는 Blossom이 추천하는 꽃놀이 명소들을 둘러보는 건 어때요? 가을꽃에서만 느껴지는 잔잔함으로 감성을 충전해 보아요. 곧 불어올 찬 바람에 우리를 대비해 줄거에요.",
+        "https://blossom-public-dev.s3.ap-northeast-2.amazonaws.com/content-image/contents1_main_s.png",
         "https://blossom-public-dev.s3.ap-northeast-2.amazonaws.com/content-image/contents2_main.png", "2023.09.15",
         "2023-01-01", "2023-01-01"),
        (3, "FLOWER CAKES", "꽃을 좋아하는 당신을 위해,",
         "특별한 날에 빠질 수 없는 케이크! 사계절 내내 맛있게 만나볼 수 있는 꽃 케이크는 어때요? 블라썸이 추천하는 서울의 꽃 케이크 전문점들로 소중한 날을 더욱 향기롭게 즐겨보아요.",
+        "https://blossom-public-dev.s3.ap-northeast-2.amazonaws.com/content-image/contents1_main_s.png",
         "https://blossom-public-dev.s3.ap-northeast-2.amazonaws.com/content-image/contents3_main.png", "2023.10.09",
         "2023-01-01", "2023-01-01");
 

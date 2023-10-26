@@ -44,6 +44,9 @@ public class Content extends BaseEntity {
 	@Column(name = "DESCRIPTION", nullable = false, length = 1000)
 	private String description;
 
+	@Column(name = "CONTENT_THUMBNAIL_URL", nullable = false, length = 300)
+	private String contentThumbnailUrl;
+
 	@Column(name = "CONTENT_IMAGE_URL", nullable = false, length = 300)
 	private String contentImageUrl;
 

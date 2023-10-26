@@ -64,7 +64,7 @@ public class FlowerDocument {
 		private static ContentSummaryInfo of(Content content) {
 			return ContentSummaryInfo.builder()
 				.contentId(content.getId())
-				.imageUrl(content.getContentImageUrl())
+				.imageUrl(content.getContentThumbnailUrl())
 				.title(content.getTitle())
 				.subtitle(content.getSubtitle())
 				.build();

@@ -104,7 +104,7 @@ public class FlowerResponse {
 				.collect(Collectors.toList()))
 			.contents(flower.getFlowerContents()
 				.stream()
-				.map(flowerContent -> ContentSummaryInfo.of(flowerContent.getContent()))
+				.map(flowerContent -> ContentSummaryInfo.of(flowerContent.getContent(), true))
 				.collect(Collectors.toList()))
 			.build();
 	}

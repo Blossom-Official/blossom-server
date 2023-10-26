@@ -127,14 +127,15 @@ CREATE TABLE `FLOWER_HIT`
 
 CREATE TABLE `CONTENT`
 (
-    `CONTENT_ID`        bigint auto_increment primary key,
-    `TITLE`             varchar(100)  NOT NULL,
-    `SUBTITLE`          varchar(100)  NOT NULL,
-    `DESCRIPTION`       varchar(1000) NOT NULL,
-    `CONTENT_IMAGE_URL` varchar(300)  NOT NULL,
-    `POSTED_AT`         datetime      NOT NULL,
-    `CREATED_AT`        datetime      NOT NULL,
-    `MODIFIED_AT`       datetime      NOT NULL
+    `CONTENT_ID`            bigint auto_increment primary key,
+    `TITLE`                 varchar(100)  NOT NULL,
+    `SUBTITLE`              varchar(100)  NOT NULL,
+    `DESCRIPTION`           varchar(1000) NOT NULL,
+    `CONTENT_THUMBNAIL_URL` varchar(300)  NOT NULL,
+    `CONTENT_IMAGE_URL`     varchar(300)  NOT NULL,
+    `POSTED_AT`             datetime      NOT NULL,
+    `CREATED_AT`            datetime      NOT NULL,
+    `MODIFIED_AT`           datetime      NOT NULL
 );
 
 CREATE TABLE `CONTENT_INFORMATION`
