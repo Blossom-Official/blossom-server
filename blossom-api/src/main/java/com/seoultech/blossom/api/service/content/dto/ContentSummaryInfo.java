@@ -40,10 +40,10 @@ public class ContentSummaryInfo {
 		return this.contentId.hashCode();
 	}
 
-	public static ContentSummaryInfo of(Content content) {
+	public static ContentSummaryInfo of(Content content, boolean isThumbnail) {
 		return ContentSummaryInfo.builder()
 			.contentId(content.getId())
-			.imageUrl(content.getContentImageUrl())
+			.imageUrl(isThumbnail ? content.getContentThumbnailUrl() : content.getContentImageUrl())
 			.title(content.getTitle())
 			.subtitle(content.getSubtitle())
 			.build();

@@ -33,7 +33,7 @@ public class HomeResponse {
 		return HomeResponse.builder()
 			.contents(contents
 				.stream()
-				.map(ContentSummaryInfo::of)
+				.map(content -> ContentSummaryInfo.of(content, true))
 				.collect(Collectors.toList()))
 			.flowers(flowers
 				.stream()
